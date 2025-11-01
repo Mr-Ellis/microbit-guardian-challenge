@@ -68,6 +68,31 @@
       margin-top: 10px;
     }
     
+    .pdf-section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .pdf-icon {
+      font-size: 3rem;
+      color: #e74c3c;
+    }
+    
+    .pdf-info h3 {
+      margin-bottom: 5px;
+      color: var(--dark);
+    }
+    
+    .pdf-info p {
+      color: #666;
+    }
+    
     .steps-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -149,6 +174,7 @@
       font-family: 'Courier New', monospace;
       overflow-x: auto;
       position: relative;
+      max-width: 100%;
     }
     
     .code-block::before {
@@ -158,6 +184,11 @@
       right: 10px;
       color: #a0aec0;
       font-size: 0.8rem;
+    }
+    
+    .code-block pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
     
     .quiz-section {
@@ -302,6 +333,33 @@
       opacity: 1;
     }
     
+    .mission-section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+    }
+    
+    .mission-section h2 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .mission-content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .mission-step {
+      background: var(--light);
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 5px solid var(--accent);
+    }
+    
     @media (max-width: 768px) {
       .steps-container {
         grid-template-columns: 1fr;
@@ -309,6 +367,11 @@
       
       h1 {
         font-size: 2rem;
+      }
+      
+      .pdf-section {
+        flex-direction: column;
+        text-align: center;
       }
     }
   </style>
@@ -321,31 +384,50 @@
       <div class="mission-badge pulse">Your Mission: Become a Tech Agent!</div>
     </header>
     
+    <div class="pdf-section">
+      <div class="pdf-icon">📄</div>
+      <div class="pdf-info">
+        <h3>7.2+Decomposing+problems+Creating+a+smart+solution.pdf</h3>
+        <p>PDF Document</p>
+      </div>
+    </div>
+    
+    <div class="mission-section">
+      <h2>🎯 Mission: Micro:bit Guardian Challenge!</h2>
+      <div class="mission-content">
+        <div class="mission-step">
+          <h3>🕵️‍♂️ Your Task:</h3>
+          <p>You've been recruited as a junior tech agent to design a smart security system using the BBC micro:bit. Your mission is to create a prototype that can detect movement or light changes and respond with alerts — just like a real theft-detection system!</p>
+        </div>
+      </div>
+    </div>
+    
     <div class="steps-container">
       <div class="step">
         <div class="step-number">1</div>
-        <h2>Choose Your Sensor</h2>
+        <h2>🧠 Brainstorm Your Smart Device</h2>
         <div class="step-content">
-          <p>Pick one sensor from your micro:bit to use:</p>
+          <p>What kind of sensor will your micro:bit use? (Choose from light, touch, or accelerometer)</p>
           <div class="sensor-options">
             <div class="sensor-option">🌞 Light Sensor</div>
             <div class="sensor-option">🖐️ Touch Sensor</div>
             <div class="sensor-option">📦 Accelerometer</div>
           </div>
-          <p>Decide what your sensor will detect and how your micro:bit should respond!</p>
+          <p>What should happen when the sensor is triggered? (e.g., display a warning, play a sound, send a signal)</p>
         </div>
       </div>
       
       <div class="step">
         <div class="step-number">2</div>
-        <h2>Plan with a Flowchart</h2>
+        <h2>🗺️ Design Your Flowchart</h2>
         <div class="step-content">
-          <p>Let's sketch out your program using a flowchart. Use these shapes:</p>
+          <p>Use flowchart symbols to plan your program.</p>
+          <p>Include selection (if/else) decisions based on sensor input.</p>
+          <p>Make sure your flowchart shows:</p>
           <ul>
-            <li>🟢 Start/Stop</li>
-            <li>🔷 Process (e.g., "Display message")</li>
-            <li>🔶 Decision (e.g., "Is light level low?")</li>
-            <li>🟨 Input/Output (e.g., "Press button", "Show icon")</li>
+            <li>At least one input (sensor)</li>
+            <li>At least one output (display, sound, etc.)</li>
+            <li>A decision point (e.g., "Is someone near?")</li>
           </ul>
           <p class="tooltip">Example flowchart (hover to see)
             <span class="tooltiptext">
@@ -357,24 +439,26 @@
       
       <div class="step">
         <div class="step-number">3</div>
-        <h2>Code It!</h2>
+        <h2>💻 Code It!</h2>
         <div class="step-content">
-          <p>Use <a href="https://makecode.microbit.org" target="_blank">MakeCode</a> or <a href="https://python.microbit.org/v/2" target="_blank">MicroPython</a> to write your program.</p>
+          <p>Use <a href="https://makecode.microbit.org" target="_blank">MakeCode</a> or <a href="https://python.microbit.org/v/2" target="_blank">MicroPython</a> to bring your flowchart to life.</p>
+          <p>Test your code using the simulator first.</p>
+          <p>Then flash your program onto the micro:bit and try it out in the real world!</p>
           <p>Example in MicroPython:</p>
           <div class="code-block">
-            from microbit import *
-            <br><br>
-            while True:
-            <br>&nbsp;&nbsp;if input.light_level() < 50:
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;display.scroll("Warning!")
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;display.show(Image.ANGRY)
+            <pre>from microbit import *
+
+while True:
+    if input.light_level() < 50:
+        display.scroll("Warning!")
+        display.show(Image.ANGRY)</pre>
           </div>
         </div>
       </div>
       
       <div class="step">
         <div class="step-number">4</div>
-        <h2>Try It Out!</h2>
+        <h2>🧪 Try It Out!</h2>
         <div class="step-content">
           <p>Test your code in the simulator or flash it to your micro:bit.</p>
           <p>Cover the sensor or shake the device to see your program in action!</p>
